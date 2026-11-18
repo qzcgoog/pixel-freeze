@@ -1,23 +1,28 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#131b2a"><meta name="description" content="滑动颜料，补全像素。每次凝固，都会改变下一步的路。"><title>像素定格 · Pixel Freeze</title><link rel="icon" type="image/svg+xml" href="./favicon.svg">  <script type="module" crossorigin src="./assets/index-BlXREsux.js"></script>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#131b2a"><meta name="description" content="滑动颜料，补全像素。每次凝固，都会改变下一步的路。"><title>像素定格 · Pixel Freeze</title><link rel="icon" type="image/svg+xml" href="./favicon.svg">  <script type="module" crossorigin src="./assets/index-B25rYv-i.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/phaser-DXXWZowi.js">
-  <link rel="stylesheet" crossorigin href="./assets/index-rFwh6sQu.css">
+  <link rel="stylesheet" crossorigin href="./assets/index-BSJYQGox.css">
 </head>
 <body><div id="app" data-busy="false">
   <header class="masthead"><a class="brand" href="./" aria-label="像素定格首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>像素定格<small>PIXEL FREEZE</small></span></a><button id="sound" class="icon-button" aria-label="开启音效" aria-pressed="false">♪<span>音效关</span></button></header>
   <main>
-    <div class="chapter-line"><span id="chapter-label">01 / 03</span><span class="eyebrow">每一次填色，都改变下一步</span></div>
-    <nav class="levels" aria-label="选择关卡"><button aria-label="选择第1关" data-level="0"><b>01</b><span>初次凝固</span><i></i></button><button aria-label="选择第2关" data-level="1"><b>02</b><span>借色为墙</span><i></i></button><button aria-label="选择第3关" data-level="2"><b>03</b><span>先后之间</span><i></i></button></nav>
+    <div class="chapter-line"><span id="chapter-label">调色成形</span><span class="eyebrow">每一次填色，都改变下一步</span></div>
+    <nav id="chapters" class="chapters" aria-label="选择大关"></nav>
+    <nav id="stages" class="levels" aria-label="选择阶段"></nav>
     <section class="puzzle" aria-labelledby="level-name">
       <div class="level-title"><div><p id="difficulty">入门 · 简单</p><h1 id="level-name">初次凝固</h1></div><div class="move-stat"><b id="move-count">00</b><span>有效步数</span></div></div>
-      <p id="hint" class="hint">滑动颜料，经过同色空心格就会凝固。</p>
+      <div class="objective-line"><p id="objective" class="hint"></p><button id="show-hint" aria-expanded="false" aria-controls="hint">查看提示</button></div>
+      <p id="hint" class="hint" hidden></p>
       <aside id="mixing-guide" hidden><strong>红＋黄＝橙　黄＋蓝＝绿　红＋蓝＝紫</strong><span>调色格接住原色，另一种原色加入后合成。成品下步滑出；同色与复色不能加入暂存格。</span></aside>
+      <aside id="mechanism-guide" hidden></aside>
       <div id="progress" class="progress" data-complete="false"><span><b id="filled-count">0</b> / <b id="target-count">0</b> 像素已凝固</span><div class="progress-track"><i id="progress-bar"></i></div><span id="progress-symbol" aria-hidden="true">◇</span></div>
       <div class="board-frame"><div class="frame-corner top-left"></div><div class="frame-corner bottom-right"></div><div id="board" role="img" aria-label="像素棋盘，使用下方方向按钮移动所有颜料"></div><div id="result" hidden role="status"><span class="result-glyph" aria-hidden="true">✦</span><p id="result-kicker">图案已完整</p><h2 id="result-title">第一幅，定格。</h2><p id="result-copy"></p><button id="next-level">前往下一关 <span>→</span></button></div></div>
       <div class="legend" aria-label="棋盘图例"><span><i class="pigment-symbol">●</i>颜料</span><span><i class="target-symbol">○</i>待填</span><span><i class="solid-symbol">▧</i>凝固 · 阻挡</span><span><i class="wall-symbol">▰</i>墙</span></div>
       <div class="play-zone"><div class="gesture-note"><span class="gesture-icon" aria-hidden="true">↔</span><strong>在棋盘上滑动</strong><span>或按方向键 / WASD</span><p>同色吸收 · 异色穿过<br>凝固后不可穿过</p></div><div class="dpad" aria-label="方向控制"><button class="up" aria-label="向上滑动" data-testid="move-up" data-dir="up">↑</button><button class="left" aria-label="向左滑动" data-testid="move-left" data-dir="left">←</button><div aria-hidden="true">✦</div><button class="right" aria-label="向右滑动" data-testid="move-right" data-dir="right">→</button><button class="down" aria-label="向下滑动" data-testid="move-down" data-dir="down">↓</button></div></div>
       <div class="actions"><button id="undo" aria-label="撤销一步"><span aria-hidden="true">↶</span> 撤销<small>不限次数</small></button><button id="restart" aria-label="重新开始"><span aria-hidden="true">↻</span> 重开<small>重新尝试</small></button></div>
       <p id="feedback" class="feedback" role="status" aria-live="polite">先想一步，再让颜色出发。</p>
+      <div class="trial-link"><button id="split-trial" aria-current="false">独立谜题：解色分路 →</button></div>
+      <div class="record-action"><button id="save-record">保存本次游玩记录 ↓</button><span>仅保存在本机</span></div>
     </section>
   </main><footer><span>滑动 · 填色 · 凝固</span><span id="edition">01 — 03</span></footer>
 </div></body></html>
