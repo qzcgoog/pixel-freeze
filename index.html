@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#131b2a"><meta name="description" content="滑动颜料，补全像素。每次凝固，都会改变下一步的路。"><title>像素定格 · Pixel Freeze</title><link rel="icon" type="image/svg+xml" href="./favicon.svg">  <script type="module" crossorigin src="./assets/index-B25rYv-i.js"></script>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#131b2a"><meta name="description" content="滑动颜料，补全像素。每次凝固，都会改变下一步的路。"><title>像素定格 · Pixel Freeze</title><link rel="icon" type="image/svg+xml" href="./favicon.svg">  <script type="module" crossorigin src="./assets/index-vR-MhPAd.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/phaser-DXXWZowi.js">
-  <link rel="stylesheet" crossorigin href="./assets/index-BSJYQGox.css">
+  <link rel="stylesheet" crossorigin href="./assets/index-AEIcjFfG.css">
 </head>
 <body><div id="app" data-busy="false">
   <header class="masthead"><a class="brand" href="./" aria-label="像素定格首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>像素定格<small>PIXEL FREEZE</small></span></a><button id="sound" class="icon-button" aria-label="开启音效" aria-pressed="false">♪<span>音效关</span></button></header>
@@ -14,7 +14,7 @@
       <div class="objective-line"><p id="objective" class="hint"></p><button id="show-hint" aria-expanded="false" aria-controls="hint">查看提示</button></div>
       <p id="hint" class="hint" hidden></p>
       <aside id="mixing-guide" hidden><strong>红＋黄＝橙　黄＋蓝＝绿　红＋蓝＝紫</strong><span>调色格接住原色，另一种原色加入后合成。成品下步滑出；同色与复色不能加入暂存格。</span></aside>
-      <aside id="mechanism-guide" hidden></aside>
+      <aside id="mechanism-guide" hidden></aside><p id="portal-status" role="status" hidden></p>
       <div id="progress" class="progress" data-complete="false"><span><b id="filled-count">0</b> / <b id="target-count">0</b> 像素已凝固</span><div class="progress-track"><i id="progress-bar"></i></div><span id="progress-symbol" aria-hidden="true">◇</span></div>
       <div class="board-frame"><div class="frame-corner top-left"></div><div class="frame-corner bottom-right"></div><div id="board" role="img" aria-label="像素棋盘，使用下方方向按钮移动所有颜料"></div><div id="result" hidden role="status"><span class="result-glyph" aria-hidden="true">✦</span><p id="result-kicker">图案已完整</p><h2 id="result-title">第一幅，定格。</h2><p id="result-copy"></p><button id="next-level">前往下一关 <span>→</span></button></div></div>
       <div class="legend" aria-label="棋盘图例"><span><i class="pigment-symbol">●</i>颜料</span><span><i class="target-symbol">○</i>待填</span><span><i class="solid-symbol">▧</i>凝固 · 阻挡</span><span><i class="wall-symbol">▰</i>墙</span></div>
